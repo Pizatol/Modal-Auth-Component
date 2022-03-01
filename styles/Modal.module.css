@@ -1,7 +1,8 @@
 .globalContainer {
-  position: relative;
+  position: fixed;
   width: 100vw;
   height: 100vh;
+  z-index: 2;
 }
 
 .overlay {
@@ -21,6 +22,36 @@
   background-color: #F2F2F2;
   border-radius: 5px;
   padding: 1rem;
+  -webkit-animation-name: appear;
+          animation-name: appear;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+}
+
+@-webkit-keyframes appear {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate(-50%, -70%);
+            transform: translate(-50%, -70%);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate(-50%, -70%);
+            transform: translate(-50%, -70%);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+  }
 }
 
 .upCard {
@@ -37,7 +68,7 @@
 }
 
 .upCard h1 {
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: var(--font);
   line-height: 1.5;
 }
 
@@ -51,9 +82,9 @@
 }
 
 .modCard p {
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: var(--font);
   font-size: 1.3rem;
-  margin: 0;
+  margin: 1rem;
 }
 
 .downCard {
@@ -70,5 +101,17 @@
   padding: 1rem;
   border: none;
   border-radius: .5rem;
+  font-family: var(--font);
+  font-size: 1.5rem;
+}
+
+.btnAction {
+  color: var(--color);
+  background-color: #F2F2F2;
+}
+
+.btnClose {
+  background: var(--color);
+  color: #F2F2F2;
 }
 /*# sourceMappingURL=Modal.module.css.map */
