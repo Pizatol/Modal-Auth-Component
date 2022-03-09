@@ -7,6 +7,7 @@ import { useContext } from "react";
 import Link from "next/link";
 
 import Modal from "../components/Modal";
+import SignUpModal from "../components/SignUpModal";
 
 
 
@@ -32,19 +33,21 @@ export default function Home() {
         <a>Route privée</a>
     </Link>
 
-    <Link href="/sign/signUp">
-      <a> Sign Up </a>
-    </Link>
     <Link href="/sign/signIn">
       <a>Sign In</a>
     </Link>
 
+    <Link href="/sign/signUp">
+      <a> Sign Up </a>
+    </Link>
 
         <button className={css.button} onClick={() => toggleFunc()}>
           Toggle
         </button>
 
-        {toggleModal ? <Modal /> : ""}
+        
+
+        {toggleModal ? <SignUpModal/> : ""}
       </section>
     </div>
   );
