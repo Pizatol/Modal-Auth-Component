@@ -5,13 +5,24 @@ import {
     onAuthStateChanged
 } from "firebase/auth"
 
+import {auth} from '../firebase/firebase-config'
 
 export const ModalContext = createContext();
 
 export const ModalProvider = (props) => {
-   
+
+  
+  const [currentUser, setCurrentUser] = useState()
+  const [loadingData, setLoadingData] = useState(true)
+
+  const signUp = (email, pwd) => createUserWithEmailAndPassword(auth, email, pwd)
+
+
+
+  //  MODAL
+
     const [modalState, setModalState] = useState({
-        signUpModal: true,
+        signUpModal: false,
         signInModal: false
       })
     
@@ -38,7 +49,7 @@ export const ModalProvider = (props) => {
 
 
     return (
-        <ModalContext.Provider value={{modalState, toggleModals}}>
+        <ModalContext.Provider value={{modalState, toggleModals, signUp}}>
             {props.children}
         </ModalContext.Provider>
     );
