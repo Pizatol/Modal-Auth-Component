@@ -2,10 +2,15 @@ import css from "../styles/SignUpModal.module.scss";
 
 import { ModalContext } from "../context/Context";
 import { useContext, useState, useRef } from "react";
+import { useRouter } from "next/router";
 
 export default function SignUpModal() {
+
+    const router = useRouter()
+
     const { modalState, toggleModals, signUp } = useContext(ModalContext);
 
+    
     const [validation, setValidation] = useState("");
 
     const closeModal = () => {
@@ -24,9 +29,10 @@ export default function SignUpModal() {
     };
 
     // VALIDATION FORMULAIRE
+
     const validForm = async (e) => {
         e.preventDefault();
-        console.log(inputs);
+        
         if (
             (inputs.current[1].value.length || inputs.current[2].value.length) <
             6
@@ -44,9 +50,15 @@ export default function SignUpModal() {
                 inputs.current[0].value,
                 inputs.current[1].value
             );
-
+                console.log(cred);
             formRef.current.reset();
-            setValidation("");
+            closeModal()
+            router.push('/privateRoad')
+           
+            
+
+
+
         } catch (err) {
             if (err.code === "auth/invalid-email") {
                 setValidation("Email format invalid");

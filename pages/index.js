@@ -4,15 +4,29 @@ import css from "../styles/Home.module.scss";
 
 import { ModalContext } from "../context/Context";
 import { useContext } from "react";
+import { signOut } from "firebase/auth";
+import { useRouter } from "next/router";
+import { auth } from "../firebase/firebase-config";
 
 import SignUpModal from "../components/SignUpModal";
 import SignInModal from "../components/SignInModal";
 
 export default function Home() {
+    const router = useRouter();
 
-    const { toggleModals } = useContext(ModalContext);
+    const { modalState, toggleModals, signUp, currentUser } =
+        useContext(ModalContext);
 
-  
+    console.log(currentUser);
+
+    const logOut = async () => {
+        try {
+            await signOut(auth);
+            router.push("/");
+        } catch (err) {
+            alert(" we can't deconnect, please retry");
+        }
+    };
 
     return (
         <div className={css.container}>
@@ -26,13 +40,16 @@ export default function Home() {
             </Head>
 
             <section>
+
+                {currentUser ? "Welcome Buddy" : ""}
                 <button onClick={() => toggleModals("signIn")}>Sign In</button>
 
                 <button onClick={() => toggleModals("signUp")}>Sign Up</button>
 
-              <SignUpModal/>
-              <SignInModal/>
-                
+                <button onClick={logOut}>Log Out</button>
+
+                <SignUpModal />
+                <SignInModal />
             </section>
         </div>
     );
