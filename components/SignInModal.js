@@ -56,7 +56,7 @@ export default function SignInModal() {
                     <div className={css.overlay} onClick={closeModal}></div>
                     <div className={css.cardContainer}>
                         <div className={css.upCard}>
-                            <h1>Sign Up !</h1>
+                            <h1>Sign In !</h1>
                         </div>
                         <div className={css.modCard}>
                             <form ref={formRef} onSubmit={validForm}>

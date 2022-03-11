@@ -35,7 +35,7 @@ export default function SignUpModal() {
         
         if (
             (inputs.current[1].value.length || inputs.current[2].value.length) <
-            6
+            5
         ) {
             setValidation(" 6 caracters minimum");
             return;
@@ -53,7 +53,7 @@ export default function SignUpModal() {
                 console.log(cred);
             formRef.current.reset();
             closeModal()
-            router.push('/privateRoad')
+            router.push('/')
            
             
 

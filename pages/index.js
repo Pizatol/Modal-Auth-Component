@@ -2,6 +2,7 @@ import Head from "next/head";
 // import Image from "next/image";
 import css from "../styles/Home.module.scss";
 
+import Link from "next/link";
 import { ModalContext } from "../context/Context";
 import { useContext } from "react";
 import { signOut } from "firebase/auth";
@@ -11,6 +12,7 @@ import { auth } from "../firebase/firebase-config";
 import SignUpModal from "../components/SignUpModal";
 import SignInModal from "../components/SignInModal";
 
+
 export default function Home() {
     const router = useRouter();
 
@@ -19,17 +21,11 @@ export default function Home() {
 
     console.log(currentUser);
 
-    const logOut = async () => {
-        try {
-            await signOut(auth);
-            router.push("/");
-        } catch (err) {
-            alert(" we can't deconnect, please retry");
-        }
-    };
+   
+    
 
     return (
-        <div className={css.container}>
+        <div >
             <Head>
                 <title>La Modale et l'Auth</title>
                 <meta
@@ -39,17 +35,33 @@ export default function Home() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <section>
-
-                {currentUser ? "Welcome Buddy" : ""}
-                <button onClick={() => toggleModals("signIn")}>Sign In</button>
-
-                <button onClick={() => toggleModals("signUp")}>Sign Up</button>
-
-                <button onClick={logOut}>Log Out</button>
+            <section className={css.container}>
 
                 <SignUpModal />
                 <SignInModal />
+               
+                {currentUser ?
+
+                <div className={css.privatePart}>
+
+                <h1>"Welcome Buddy"</h1>
+                <h3>Let's go to the private page</h3>
+
+                <Link href="/privateRoad">
+                    <button className={css.buttonPrivate}>Private Page</button>
+                </Link>
+
+                </div>
+
+
+
+                  : 
+                  <div className={css.publicPart}>
+                      <h1>Welcome on board !</h1>
+                  </div>
+                  }
+                
+
             </section>
         </div>
     );
