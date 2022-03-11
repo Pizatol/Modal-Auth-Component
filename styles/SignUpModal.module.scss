@@ -21,7 +21,7 @@
 	height: auto;
 	background-color: #F2F2F2;
 	border-radius: 5px;
-	padding: 1rem;
+	padding: 1.5rem;
 	animation-name: appear;
 	animation-duration: 1s;
 	
@@ -41,12 +41,19 @@
 	justify-content: space-between;
 	align-items: center;
 	font-family: var(--font);
+
+	h1{
+		
+		margin: 1rem auto;
+	}
+
 	 button {
 		 border: none;
 		 border-radius: 10px;
 		 font-size: 1rem;
 		 transition: all .5s ease;
 		 height: 1.4rem;
+		 
 		 
 	 }
 	 button:hover {
@@ -79,4 +86,14 @@
 	font-family: var(--font);
 	font-size: 1.5rem;
 	padding: 1rem;
+	background-color: rgb(84 105 212);
+	border: none;
+	border-radius: 4px;
+	color: rgb(255, 255, 255) ;
+	width: 100%;
+	
+}
+
+.validation {
+	color: red;
 }

@@ -8,10 +8,10 @@ export default function SignUpModal() {
 
     const [validation, setValidation] = useState("");
 
-    const closeModal = () => {
-        setValidation("");
-        toggleModals("close");
-      };
+	 const closeModal = () => {
+		setValidation("");
+		toggleModals("close");
+	 };
 
     const inputs = useRef([]);
 
@@ -31,25 +31,21 @@ export default function SignUpModal() {
             inputs.current[1].value = "";
             inputs.current[2].value = "";
             return;
-        } else if (inputs.current[1].value !== inputs.current[2].value) {
-            setValidation(" passwords do not match");
-            inputs.current[0].value = "";
-            inputs.current[1].value = "";
-            inputs.current[2].value = "";
-            return;
         }
+      
     };
 
     return (
-            <>
 
-        {modalState.signUpModal && (
+		<>
+		{modalState.signInModal && (
 
-            <div className={css.globalContainer}>
+
+        <div className={css.globalContainer}>
             <div className={css.overlay} onClick={closeModal}></div>
             <div className={css.cardContainer}>
                 <div className={css.upCard}>
-                    <h1>Sign Up !</h1>
+                    <h1>Sign In !</h1>
                 </div>
                 <div className={css.modCard}>
                     <form onSubmit={validForm}>
@@ -71,15 +67,7 @@ export default function SignUpModal() {
                                 required
                             />
                         </div>
-                        <div className={css.formItem}>
-                            <label htmlFor="pwd">Repeat password</label>
-                            <input
-                                ref={addInput}
-                                type="password"
-                                id="pwd"
-                                required
-                            />
-                        </div>
+
                         <button className={css.btnSubmit}>Submit</button>
                     </form>
                     <span className={css.validation}> {validation} </span>
@@ -87,7 +75,10 @@ export default function SignUpModal() {
                 <div className={css.downCard}></div>
             </div>
         </div>
-            )}
-            </>
+
+
+
+		)}
+		</>
     );
 }
